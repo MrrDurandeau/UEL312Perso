@@ -18,6 +18,9 @@ class FibonacciSequence implements Iterator {
     }
 
     public static function range(int $start, ?int $length = null): self {
+        if ($length === null) {
+            return new FibonacciSequence(null, $start);
+        }
         return new FibonacciSequence($start+$length, $start);
     }
 
@@ -55,4 +58,9 @@ class FibonacciSequence implements Iterator {
         self::$fibonacciSequence[] = $number;
     }
 }
+
+foreach(FibonacciSequence::first() as $number) {
+    echo $number." ";
+}
+echo "<br>";
 ?>
