@@ -58,9 +58,4 @@ class FibonacciSequence implements Iterator {
         self::$fibonacciSequence[] = $number;
     }
 }
-
-foreach(FibonacciSequence::first() as $number) {
-    echo $number." ";
-}
-echo "<br>";
 ?>
