@@ -53,7 +53,6 @@ class FibonacciSequence implements Iterator {
         }
         $number = self::$fibonacciSequence[$n-2] + self::$fibonacciSequence[$n-1];
         self::$fibonacciSequence[] = $number;
-        echo "Calc'd : ";
     }
 }
 ?>
