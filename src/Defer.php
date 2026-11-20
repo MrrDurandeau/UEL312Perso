@@ -12,8 +12,29 @@ class Callback {
 }
 
 class Defer {
+    private array $callables = [];
     public function __construct() {}
-
-    public function __destruct() {}
+    public static function init(&$var) {
+        $var = new Defer();
+    }
+    public function __invoke($callable, ...$args) {
+        array_unshift($this->callables, new Callback($callable, $args));
+    }
+    public function __destruct() {
+        foreach ($this->callables as $callable) {
+            $callable->call();
+        }
+    }
 }
+function world() {
+    echo "World" . PHP_EOL;
+}
+function hello() {
+    Defer::init($abc);
+    $abc("world");
+
+    echo "Hello";
+}
+hello();
+
 ?>
