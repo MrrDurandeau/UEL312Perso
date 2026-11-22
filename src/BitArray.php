@@ -13,6 +13,7 @@ class BitArrayIterator implements Iterator {
     }
     public function current(): mixed {
         if ($this->length === 1) {
+            // L'exemple donné sur les consignes indique "int: 0b0", ce que je n'ai pas compris. J'ai utilisé des strings à la place.
             return "0b".$this->bits[$this->index];
         } else {
             return new BitArray(substr($this->bits, $this->index, $this->length));
@@ -33,6 +34,8 @@ class BitArrayIterator implements Iterator {
 }
 
 class BitArray implements ArrayAccess, Countable, IteratorAggregate, Stringable {
+    // Je n'ai pas compris le but des variables qui étaient fournies avec le boilerplate.
+    // J'ai décidé de stocker mes bits en string, ce qui m'a l'air plus efficace qu'un array, et m'était plus compréhensible qu'avec des int.
     private string $bits = "";
 
     public function __construct(string $bits = "") {
